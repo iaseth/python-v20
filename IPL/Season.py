@@ -10,6 +10,8 @@ class Season():
 		for jo in self.jo["matches"]:
 			match = Match(self, jo)
 			self.matches.append(match)
+			if len(self.matches) == self.tournament.max_matches:
+				break
 
 	def __repr__(self):
 		return f"Season: {self}"
