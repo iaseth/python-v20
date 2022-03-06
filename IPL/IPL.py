@@ -5,6 +5,8 @@ from .Team import Team
 from .Ground import Ground
 from .Player import Player
 
+from .Season import Season
+
 
 class IPL():
 	def __init__(self, args):
@@ -21,7 +23,8 @@ class IPL():
 			return
 		self.cj = json.load(open(self.cj_path))
 		self.bj = json.load(open(self.bj_path))
-		self.setupCodes();
+		self.setupCodes()
+		self.setupSeasons()
 
 	def setupCodes(self):
 		self.setupTeams()
@@ -46,14 +49,21 @@ class IPL():
 		for index in players_json:
 			self.players[index] = Player(self, players_json[index])
 
-	def printCodeStats(self):
+	def setupSeasons(self):
+		self.seasons = []
+		self.matches = []
+		for jo in self.bj["seasons"]:
+			season = Season(self, jo)
+			self.seasons.append(season)
+
+	def printStats(self):
 		print(f"IPL Object:")
 		print(f"\t---- {len(self.teams)} teams")
 		print(f"\t---- {len(self.grounds)} grounds")
 		print(f"\t---- {len(self.players)} players")
 
 	def doStuff(self):
-		self.printCodeStats()
+		self.printStats()
 		pass
 
 	def printArgs(self):
