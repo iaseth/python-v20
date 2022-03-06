@@ -2,6 +2,8 @@ import json
 import os
 
 from .Team import Team
+from .Ground import Ground
+from .Player import Player
 
 
 class IPL():
@@ -28,19 +30,31 @@ class IPL():
 
 	def setupTeams(self):
 		teams_json = self.cj["teams"]
-		self.teams = [];
+		self.teams = {}
 		for index in teams_json:
-			team = Team(self, teams_json[index])
-			self.teams.append(team)
+			self.teams[index] = Team(self, teams_json[index])
 
 	def setupGrounds(self):
-		pass
+		grounds_json = self.cj["grounds"]
+		self.grounds = {}
+		for index in grounds_json:
+			self.grounds[index] = Ground(self, grounds_json[index])
 
 	def setupPlayers(self):
-		pass
+		players_json = self.cj["players"]
+		self.players = {}
+		for index in players_json:
+			self.players[index] = Player(self, players_json[index])
+
+	def printCodeStats(self):
+		print(f"IPL Object:")
+		print(f"\t---- {len(self.teams)} teams")
+		print(f"\t---- {len(self.grounds)} grounds")
+		print(f"\t---- {len(self.players)} players")
 
 	def doStuff(self):
-		self.printArgs()
+		self.printCodeStats()
+		pass
 
 	def printArgs(self):
 		print(self.args)
