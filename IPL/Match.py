@@ -12,11 +12,29 @@ class Match():
 		self.season_index = len(season.matches)
 
 		self.meta = jo["meta"]
+		self.order = self.meta["order"]
 		self.team_a = self.tournament.teams[jo["teams"][0]["team"]]
 		self.team_b = self.tournament.teams[jo["teams"][1]["team"]]
 		self.ground = self.tournament.grounds[self.meta["ground"]]
-		self.winner = None
-		self.loser = None
+
+		if self.meta["outcome"] == "A":
+			self.winner = self.team_a
+			self.loser = self.team_b
+		elif self.meta["outcome"] == "B":
+			self.winner = self.team_b
+			self.loser = self.team_a
+		else:
+			self.winner = None
+			self.loser = None
+
+		self.squad_a = Squad(self, jo["teams"][0], self.team_a, self.team_b)
+		self.squad_b = Squad(self, jo["teams"][1], self.team_b, self.team_a)
+		self.squad_a.opposition_squad = self.squad_b
+		self.squad_b.opposition_squad = self.squad_a
+
+		a_batted_first = 0 in self.order and self.order[0] == 0
+		self.inning_a = TeamInning(self.squad_a, jo["innings"], 0 if a_batted_first else 1)
+		self.inning_b = TeamInning(self.squad_b, jo["innings"], 1 if a_batted_first else 0)
 
 	def __repr__(self):
 		return f"Match: {self}"
