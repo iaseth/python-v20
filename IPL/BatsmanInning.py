@@ -15,5 +15,8 @@ class BatsmanInning:
 	def getRunsString(self):
 		return self.runs if self.out else f"{self.runs}*"
 
+	def __repr__(self):
+		return f"{self.player.fn} {self.getRunsString()} ({self.balls})"
+
 	def __str__(self):
 		return f"{self.player.fn:25} {self.getRunsString():4} ({self.balls:2}) [{self.n4:2}x4, {self.n6:2}x6]"

@@ -14,5 +14,8 @@ class BowlerInning:
 		self.wds = jo["wd"]
 		self.nbs = jo["nb"]
 
+	def __repr__(self):
+		return f"{self.player.fn} {self.wkts}-{self.runs} ({self.overs})"
+
 	def __str__(self):
 		return f"{self.player.fn:25} {self.wkts}-{self.runs} ({self.overs})"

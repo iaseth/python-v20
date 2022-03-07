@@ -36,6 +36,11 @@ class Match():
 		self.inning_a = TeamInning(self.squad_a, jo["innings"], 0 if a_batted_first else 1)
 		self.inning_b = TeamInning(self.squad_b, jo["innings"], 1 if a_batted_first else 0)
 
+		self.first_inning = self.inning_a if a_batted_first else self.inning_b
+		self.second_inning = self.inning_b if a_batted_first else self.inning_a
+		self.first_inning.printToConsole()
+		self.second_inning.printToConsole()
+
 	def __repr__(self):
 		return f"Match: {self}"
 
