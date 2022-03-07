@@ -54,20 +54,26 @@ class IPL():
 	def setupTeams(self):
 		teams_json = self.cj["teams"]
 		self.teams = list(range(50))
+		self.number_of_teams = 0
 		for index in teams_json:
 			self.teams[int(index)] = Team(self, teams_json[index])
+			self.number_of_teams += 1
 
 	def setupGrounds(self):
 		grounds_json = self.cj["grounds"]
 		self.grounds = list(range(200))
+		self.number_of_grounds = 0
 		for index in grounds_json:
 			self.grounds[int(index)] = Ground(self, grounds_json[index])
+			self.number_of_grounds += 1
 
 	def setupPlayers(self):
 		players_json = self.cj["players"]
 		self.players = list(range(2000))
+		self.number_of_players = 0
 		for index in players_json:
 			self.players[int(index)] = Player(self, players_json[index])
+			self.number_of_players += 1
 
 	def setupSeasons(self):
 		self.seasons = []
@@ -81,9 +87,9 @@ class IPL():
 
 	def printStats(self):
 		print(f"IPL Object:")
-		print(f"\t---- {len(self.teams)} teams")
-		print(f"\t---- {len(self.grounds)} grounds")
-		print(f"\t---- {len(self.players)} players")
+		print(f"\t---- {self.number_of_teams} teams")
+		print(f"\t---- {self.number_of_grounds} grounds")
+		print(f"\t---- {self.number_of_players} players")
 		print(f"\t---- {len(self.seasons)} seasons")
 		print(f"\t---- {len(self.matches)} matches")
 

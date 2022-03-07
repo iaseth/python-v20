@@ -13,10 +13,10 @@ class BatsmanInning:
 		self.out = True if "out" in jo else False
 
 	def getRunsString(self):
-		return self.runs if self.out else f"{self.runs}*"
+		return f"{self.runs}" if self.out else f"{self.runs}*"
 
 	def __repr__(self):
 		return f"{self.player.fn} {self.getRunsString()} ({self.balls})"
 
 	def __str__(self):
-		return f"{self.player.fn:25} {self.getRunsString():4} ({self.balls:2}) [{self.n4:2}x4, {self.n6:2}x6]"
+		return f"{self.player.fn:25} {self.runs:3}{' ' if self.out else '*'} ({self.balls:2}) [{self.n4:2}x4, {self.n6:2}x6]"
