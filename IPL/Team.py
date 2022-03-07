@@ -11,6 +11,8 @@ class Team():
 		self.abb = jo["abb"]
 		self.name = jo["name"]
 		self.matches = []
+		self.squads = []
+		self.innings = []
 
 	def __repr__(self):
 		return f"Team: {self}"

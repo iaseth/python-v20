@@ -38,8 +38,17 @@ class Match():
 
 		self.first_inning = self.inning_a if a_batted_first else self.inning_b
 		self.second_inning = self.inning_b if a_batted_first else self.inning_a
-		self.first_inning.printToConsole()
-		self.second_inning.printToConsole()
+		self.printToConsole()
+
+	def printToConsole(self):
+		dashes = "================================================"
+		print(dashes)
+		print(f"IPL {self.season.year}, Match {self.season_index+1} - {self.team_a.abb} vs {self.team_b.abb}")
+		if self.first_inning.happened:
+			self.first_inning.printToConsole()
+		if self.second_inning.happened:
+			self.second_inning.printToConsole()
+		print(dashes)
 
 	def __repr__(self):
 		return f"Match: {self}"

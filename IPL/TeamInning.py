@@ -9,6 +9,7 @@ class TeamInning:
 		self.team = squad.team
 		self.match = squad.match
 		self.tournament = squad.tournament
+		self.happened = False
 		self.batting = []
 		self.bowling = []
 		if index < len(jo):
@@ -20,6 +21,7 @@ class TeamInning:
 		self.wkts = len(self.jo["wickets"])
 		self.setupBatting()
 		self.setupBowling()
+		self.happened = True
 
 	def setupBatting(self):
 		for jo in self.jo["batting"]:
@@ -32,7 +34,7 @@ class TeamInning:
 			self.bowling.append(b)
 
 	def printToConsole(self):
-		dashes = "================================================"
+		dashes = "------------------------------------------------"
 		print(dashes)
 		print(self)
 		print(dashes)
@@ -41,7 +43,6 @@ class TeamInning:
 		print(dashes)
 		for b in self.bowling:
 			print(b)
-		print(dashes)
 
 	def __str__(self):
 		return f"{self.team.fn:35} {self.runs}-{self.wkts} ({self.overs})"
