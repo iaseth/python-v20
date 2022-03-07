@@ -18,4 +18,4 @@ class BowlerInning:
 		return f"{self.player.fn} {self.wkts}-{self.runs} ({self.overs})"
 
 	def __str__(self):
-		return f"{self.player.fn:25} {self.wkts}-{self.runs} ({self.overs})"
+		return f"{self.player.fn:25} {self.wkts}-{self.runs:2} ({self.overs})"

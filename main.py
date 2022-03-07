@@ -1,5 +1,5 @@
 import sys
-from IPL.IPL import IPL
+from IPL import IPL
 
 
 def main():
