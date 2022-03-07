@@ -17,6 +17,7 @@ class TeamInning:
 		else:
 			return
 		self.runs = self.jo["runs"]
+		self.balls = self.jo["balls"]
 		self.overs = self.jo["overs"]
 		self.wkts = len(self.jo["wickets"])
 		self.setupBatting()
@@ -44,5 +45,11 @@ class TeamInning:
 		for b in self.bowling:
 			print(b)
 
+	def getRunRate(self):
+		return 0 if self.balls is 0 else (self.runs * 6 / self.balls)
+
+	def getRunRateRounded(self):
+		return round(self.getRunRate(), 2)
+
 	def __str__(self):
-		return f"{self.team.fn:35} {self.runs}-{self.wkts} ({self.overs})"
+		return f"{self.team.fn:35} {self.runs}-{self.wkts} ({self.overs}) {self.getRunRateRounded()}"
