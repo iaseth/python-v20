@@ -1,10 +1,10 @@
 import sys
-from IPL import IPL
+from v20 import League
 
 
 def main():
-	ipl = IPL(sys.argv[1:])
-	ipl.doStuff()
+	league = League(sys.argv[1:])
+	league.doStuff()
 
 if __name__ == '__main__':
 	main()

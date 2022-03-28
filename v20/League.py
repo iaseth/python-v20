@@ -8,7 +8,7 @@ from .Player import Player
 from .Season import Season
 
 
-class IPL():
+class League():
 	def __init__(self, args):
 		self.processProps(args)
 		self.setupJsons()
